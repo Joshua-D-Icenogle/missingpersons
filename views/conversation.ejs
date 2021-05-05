@@ -1,0 +1,40 @@
+<%- include('top') %>
+<div id="message-page" class="bg-light">
+  <h3 class="p-2"><a href="/profile/<%= userId %>">Go Back</a></h3>
+  <div class="text-center">
+    <a class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#replyModal">
+      Reply 
+    </a>
+  </div>
+  <% for (let i = 0; i < messages.length; i++) { %>
+    <div class="mx-auto pt-5 row">
+      <div class="col m-auto bg-white col-12 col-md-10 col-lg-8">
+        <h6 class="p-1"><strong><a href="/profile/<%= messages[i].senderId %>"><%= messages[i].senderName %></a></strong></h6>
+        <p class="p-4"><%= messages[i].message %></p>
+      </div>
+    </div>
+  <% } %>    
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="replyModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Message</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="message-form" action="/reply/<%= replyId %>" method="POST">
+          <h6>Enter message</h6>
+          <textarea id='leadText' name="message" class="form-control"></textarea>  
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" form="message-form" class="btn btn-primary">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('bottom') %>

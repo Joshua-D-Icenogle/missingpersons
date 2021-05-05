@@ -1,0 +1,78 @@
+<%- include('top') %>
+<div id="me" class="bg-dark text-center text-white pt-5">
+  <img class="profile-img" src="<%= data.imgUrl %>">
+    <div class="my-3">
+      <% if (isLoggedIn) { %>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#messageModal">
+          Message   
+        </button>
+      <% } %>
+      <% if (!isLoggedIn) { %>
+        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+          Message   
+        </button>
+      <% } %>  
+    </div>
+  
+    <h3><%= data.firstName %> <%= data.lastName %></h3>
+    <div id="me-content" class="bg-light">
+      <h1 class="py-5">Posts</h1>
+      <% for (let i = 0; i < people.length; i++) { %>  
+        <div class="person row mx-auto">
+          <img src="<%= people[i].imgUrl %>" class="col col-12 col-sm-8 col-md-7 col-lg-5" alt="...">
+          <div class="col m-auto text-center">
+            <h3><%= people[i].firstName %>  <%= people[i].lastName %></h3>
+            <% if (people[i].status == "Missing") { %>
+              <h4 class="text-danger">Status: Missing</h4>
+            <% } %>
+            <% if (people[i].status !== "Missing") { %>
+              <h4 class="text-success">Status: Found</h4>
+            <% } %>
+            <span><strong>Last seen place:</strong> <%= people[i].city %>, <%= people[i].state %> </span><br>
+            <a href="/person/<%= people[i]._id %>">Additional Information</a>
+          </div>  
+        </div>
+      <% } %>
+
+    </div>
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="messageModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Message</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="message-form" action="/send-message/<%= data._id %>" method="POST">
+          <h6>Enter message</h6>
+          <textarea id='leadText' name="message" class="form-control"></textarea>  
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="submit" form="message-form" class="btn btn-primary">Send</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Message</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-center">
+        <h6>Must be logged in to send a message.</h6>
+        <a href="/login" class="btn btn-primary" >Login</a>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('bottom') %>

@@ -1,0 +1,123 @@
+* {
+    max-width: 100%;
+}
+
+body {
+    min-height: 100vh;
+}
+
+nav {
+    min-height: 10vh;
+}
+
+.nav-link {
+    font-size: 1.4rem;
+}
+
+#header-wrapper {
+    min-height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+#header-heading {
+    color: white;
+    font-size: 3rem;
+    text-align: center;
+}
+
+#header-icon {
+    width: 80%;
+}
+
+#persons-list {
+    min-height: 50vh;
+}
+
+.person {
+    padding: 1rem;
+    border-bottom: 1px gray solid;
+}
+
+.person img {
+    width: 100%;
+}
+
+#me {
+    color: white;
+    min-height: 20vh;
+}
+
+.profile-img {
+    width: 50%;
+    max-height: 300px;
+}
+
+#person-content {
+    min-height: 90vh;
+}
+
+#person-content ul {
+    list-style: none;
+    display: inline-block;
+}
+
+#person-content ul li {
+    text-align: start;
+}
+
+#me-content {
+    color: black;
+    min-height: 70vh;
+}
+
+#message-page {
+    min-height: 90vh;
+}
+
+.person img {
+    align-self: flex-start;
+}
+
+@media (min-width: 500px) {
+    #header-icon {
+        width: 60%;
+    }
+}
+
+@media (min-width: 768px) {
+    #header-icon {
+        width: 50%;
+    }
+    .person img {
+        width: 50%;
+        height: auto;
+    }
+    .profile-img {
+        width: 300px;
+        max-height: 400px;
+    }
+}
+
+@media (min-width: 1024px) {
+    #header-icon {
+        width: 40%;
+    }
+    .person img {
+        width: 30%;
+    }
+
+}
+
+#register {
+    min-height: 90vh;
+}

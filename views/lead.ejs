@@ -1,0 +1,11 @@
+<%- include('top') %>
+<div id="message-page" class="bg-light">
+  <h3 class="p-2"><a href="/profile/<%= userId %>">Go Back</a></h3>
+    <div class="m-auto pt-5 row">
+      <div class="col m-auto bg-white col-12 col-md-10 col-lg-8">
+        <h6 class="p-1">Submitted By: <strong><a href="/profile/<%= lead.senderId %>"><%= lead.senderName %></a></strong></h6>
+        <p class="p-4"><%= lead.message %></p>
+      </div>
+    </div>
+</div>
+<%- include('bottom') %>

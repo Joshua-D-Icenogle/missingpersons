@@ -1,0 +1,234 @@
+<%- include('top') %>
+<div class="bg-light pt-5">
+ <h1 class="text-center my-5">Edit Post</h1>  
+
+<% if (success) { %> 
+    <h5 class="text-center text-success"> <%= success %> </h5>
+<% } %>
+
+ 
+
+ <% for(let i = 0; i < errors.length; i++) { %>
+    <h5 class="text-center text-danger"> <%= errors[i] %> </h5>
+<% } %>    
+
+<form id="person-form" class="col-12 col-md-8 col-lg-6 mx-auto" action="/edit-person/<%= person._id %>" method="POST">
+    <div class="mb-3">
+        <label for="fname" class="form-label">First Name</label>
+        <input type="text" required="true" class="form-control" value="<%= person.firstName %>" id="fname" name="fname">
+      </div>
+      <div class="mb-3">
+        <label for="lname" class="form-label">Last Name</label>
+        <input type="text" required="true" value="<%= person.lastName %>" class="form-control" id="lname" name="lname">
+      </div>
+      <div class="mb-3">
+        <label for="gender" class="form-label">Gender</label>
+        <select id="gender" value="" required="true" name="gender" class="form-control">
+            <option value="" disabled>Select Gender</option>
+            <% if (person.gender == 'Male') { %>
+                <option selected value="Male" >Male</option>
+                <option value="Female">Female</option>
+            <% } %>
+            <% if (person.gender == 'Female') { %>
+                <option value="Male" >Male</option>
+                <option selected value="Female">Female</option>
+            <% } %>
+           
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="dob" class="form-label">Date of Birth</label>
+        <input type="date" required="true" value="<%= person.dob %>" class="form-control" id="dob" name="dob">
+      </div>
+      <div class="mb-3">
+        <label for="hair" class="form-label">Hair Color</label>
+        <select id="hair" value="<%= person.hair %>" required="true" name="hair" class="form-control">
+            <option value="" disabled selected>Select Hair Color</option>
+            <% if (person.hair == 'Brown') { %>
+                <option selected value="Brown">Brown</option>
+                <option value="Black">Black</option>
+                <option value="Blonde">Blonde</option>
+                <option value="Red">Red</option>
+                <option value="Gray">Gray</option>
+                <option value="White">White</option>
+                <option value="None">None</option>
+            <% } %>     
+
+            <% if (person.hair == 'Black') { %>
+                <option value="Brown">Brown</option>
+                <option selected value="Black">Black</option>
+                <option value="Blonde">Blonde</option>
+                <option value="Red">Red</option>
+                <option value="Gray">Gray</option>
+                <option value="White">White</option>
+                <option value="None">None</option>
+            <% } %>  
+
+            <% if (person.hair == 'Blonde') { %>
+                <option value="Brown">Brown</option>
+                <option value="Black">Black</option>
+                <option selected value="Blonde">Blonde</option>
+                <option value="Red">Red</option>
+                <option value="Gray">Gray</option>
+                <option value="White">White</option>
+                <option value="None">None</option>
+            <% } %>  
+
+            <% if (person.hair == 'Red') { %>
+                <option value="Brown">Brown</option>
+                <option value="Black">Black</option>
+                <option value="Blonde">Blonde</option>
+                <option selected value="Red">Red</option>
+                <option value="Gray">Gray</option>
+                <option value="White">White</option>
+                <option value="None">None</option>
+            <% } %>  
+
+            <% if (person.hair == 'Gray') { %>
+                <option value="Brown">Brown</option>
+                <option value="Black">Black</option>
+                <option value="Blonde">Blonde</option>
+                <option value="Red">Red</option>
+                <option selected value="Gray">Gray</option>
+                <option value="White">White</option>
+                <option value="None">None</option>
+            <% } %> 
+            
+            <% if (person.hair == 'White') { %>
+                <option value="Brown">Brown</option>
+                <option value="Black">Black</option>
+                <option value="Blonde">Blonde</option>
+                <option value="Red">Red</option>
+                <option value="Gray">Gray</option>
+                <option selected value="White">White</option>
+                <option value="None">None</option>
+            <% } %> 
+
+            <% if (person.hair == 'None') { %>
+                <option value="Brown">Brown</option>
+                <option value="Black">Black</option>
+                <option value="Blonde">Blonde</option>
+                <option value="Red">Red</option>
+                <option value="Gray">Gray</option>
+                <option value="White">White</option>
+                <option selected value="None">None</option>
+            <% } %> 
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="eye" class="form-label">Eye Color</label>
+        <select id="eye" value="<%= person.eyes %>" required="true" name="eye" class="form-control">
+            <option value="" disabled selected>Select Eye Color</option>
+
+            <% if (person.eyes == 'Brown') { %> 
+            <option selected value="Brown">Brown</option>
+            <option value="Blue">Blue</option>
+            <option value="Green">Green</option>
+            <option value="Hazel">Hazel</option>
+            <option value="Gray">Gray</option>
+            <% } %>
+
+            <% if (person.eyes == 'Blue') { %> 
+                <option value="Brown">Brown</option>
+                <option selected value="Blue">Blue</option>
+                <option value="Green">Green</option>
+                <option value="Hazel">Hazel</option>
+                <option value="Gray">Gray</option>
+            <% } %>
+
+            <% if (person.eyes == 'Green') { %> 
+                <option value="Brown">Brown</option>
+                <option value="Blue">Blue</option>
+                <option selected value="Green">Green</option>
+                <option value="Hazel">Hazel</option>
+                <option value="Gray">Gray</option>
+            <% } %>
+
+            <% if (person.eyes == 'Hazel') { %> 
+                <option value="Brown">Brown</option>
+                <option value="Blue">Blue</option>
+                <option value="Green">Green</option>
+                <option selected value="Hazel">Hazel</option>
+                <option value="Gray">Gray</option>
+            <% } %>
+
+            <% if (person.eyes == 'Gray') { %> 
+                <option value="Brown">Brown</option>
+                <option value="Blue">Blue</option>
+                <option value="Green">Green</option>
+                <option value="Hazel">Hazel</option>
+                <option selected value="Gray">Gray</option>
+            <% } %>
+
+        </select>
+      </div>
+      <div class="mb-3">
+        <label for="race" class="form-label">Race</label>
+        <select id="ethnicity" value="<%= person.race %>" required="true" name="race" class="form-control">
+            <option value="race" disabled selected>Select One</option>
+            <% if (person.race == "American Indian or Alaska Native") { %>  
+                <option value="American Indian or Alaska Native">American Indian or Alaska Native</option>
+                <option value="Asian">Asian</option>
+                <option value="Black or African American">Black or African American</option>
+                <option value="Hispanic or Latino">Hispanic or Latino</option>
+                <option value="White">White</option>
+            <% } %>   
+
+            <% if (person.race == "Asian") { %>  
+                <option value="American Indian or Alaska Native">American Indian or Alaska Native</option>
+                <option selected value="Asian">Asian</option>
+                <option value="Black or African American">Black or African American</option>
+                <option value="Hispanic or Latino">Hispanic or Latino</option>
+                <option value="White">White</option>
+            <% } %>   
+
+            <% if (person.race == "Black or African American") { %>  
+                <option value="American Indian or Alaska Native">American Indian or Alaska Native</option>
+                <option value="Asian">Asian</option>
+                <option selected value="Black or African American">Black or African American</option>
+                <option value="Hispanic or Latino">Hispanic or Latino</option>
+                <option value="White">White</option>
+            <% } %>   
+
+            <% if (person.race == "Hispanic or Latino") { %>  
+                <option value="American Indian or Alaska Native">American Indian or Alaska Native</option>
+                <option value="Asian">Asian</option>
+                <option value="Black or African American">Black or African American</option>
+                <option selected value="Hispanic or Latino">Hispanic or Latino</option>
+                <option value="White">White</option>
+            <% } %>   
+
+            <% if (person.race == "White") { %>  
+                <option value="American Indian or Alaska Native">American Indian or Alaska Native</option>
+                <option value="Asian">Asian</option>
+                <option value="Black or African American">Black or African American</option>
+                <option value="Hispanic or Latino">Hispanic or Latino</option>
+                <option selected value="White">White</option>
+            <% } %>   
+        </select>
+      </div>
+      <div class="mx-auto row mb-3">
+        <label class="form-label">Height</label>
+        <div class="col"  style="padding-left: 0;"> 
+            <input required="true" type="number" placeholder="feet" value="<%= person.feet %>" class="form-control" id="feet" name="feet">
+        </div>
+        <div class="col" style="padding-right: 0;">
+            <input type="number" placeholder="inches" value="<%= person.inches %>" class="form-control" id="inches" name="inches">
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="weight" class="form-label">Weight (lbs)</label>
+        <input required="true" type="number" value="<%= person.weight %>" class="form-control" id="weight" name="weight">
+      </div>
+      <div class="mb-3">
+        <label for="lastSeen" class="form-label">Last Seen At</label>
+        <input required="true" type="datetime-local" value="<%= person.lastSeen %>" class="form-control" id="lastSeen" name="lastSeen">
+      </div>
+      <div class="mb-3 row mx-auto">
+        <label for="zip" class="form-label">Zipcode</label>
+            <input required="true" maxlength="5" type="text" value="<%= person.zip %>" placeholder="ZIP" class="form-control" id="zip" name="zip">
+      </div>
+      <button class="btn btn-primary" type="submit">Submit</button>
+</form>
+</div>
+<%- include('bottom') %>

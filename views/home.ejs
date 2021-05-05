@@ -1,0 +1,35 @@
+<%- include('top') %>
+
+<div id="header-wrapper" class="bg-dark">
+  <div id="header">
+    <h1 id="header-heading" class="p-1">Find Missing Persons</h1>  
+    <img id="header-icon" class="p-1" src="missing-person.png" alt="">
+  </div>
+</div>
+
+<div id="persons-list" class="bg-light">
+  <div class="container py-5">
+    <h1 class="text-center">Missing Persons:</h1>
+    <% if (people.length == 0) {%>
+    <h3 class="text-center text-secondary">No Missing People</h3>
+    <% } %>  
+    <% for (let i = 0; i < people.length; i++) { %>  
+      <div class="person row mx-auto">
+       <img src="<%= people[i].imgUrl %>" class="col col-12 col-sm-8 col-md-7 col-lg-5" alt="..."> 
+        <div class="col m-auto text-center">
+          <h3><%= people[i].firstName %>  <%= people[i].lastName %></h3>
+          <% if (people[i].status == "Missing") { %>
+            <h4 class="text-danger">Status: Missing</h4>
+          <% } %>
+          <% if (people[i].status !== "Missing") { %>
+            <h4 class="text-success">Status: Found</h4>
+          <% } %>
+          <span><strong>Last seen place:</strong> <%= people[i].city %>, <%= people[i].state %> </span><br>
+          <a href="/person/<%= people[i]._id %>">Additional Information</a>
+        </div>  
+      </div>
+    <% } %>
+  </div>
+</div>
+
+<%- include('bottom') %>

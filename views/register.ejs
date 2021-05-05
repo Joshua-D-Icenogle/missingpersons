@@ -1,0 +1,42 @@
+<%- include('top') %>
+
+<div id="register" class="bg-light">
+    
+    <h1 class="text-center py-5">Register</h1>
+
+    <% for(let i = 0; i < errors.length; i++) { %>
+        <h5 class="text-center text-danger"> <%= errors[i] %> </h5>
+    <% } %>    
+
+
+    <div class="container">
+        <div class="row">
+
+            <form class="col col-12 col-md-8 col-lg-6 col-xl-4 m-auto" action="/register" method="POST">
+                <div class="mb-3">
+                  <label for="email" class="form-label">Email address</label>
+                  <input type="email" class="form-control" id="email" name="username">
+                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                </div>
+                <div class="mb-3">
+                  <label for="fname" class="form-label">First Name</label>
+                  <input type="text" class="form-control" id="fname" name="fname">
+                </div>
+                <div class="mb-3">
+                  <label for="lname" class="form-label">Last Name</label>
+                  <input type="text" class="form-control" id="lname" name="lname">
+                </div>
+                <div class="mb-3">
+                  <label for="password" class="form-label">Create Password</label>
+                  <input type="password" class="form-control" id="password" name="password">
+                </div>
+                
+                <button type="submit" class="btn btn-primary">Submit</button><br>
+                <span>Already have an account? <a href="/login">Login.</a></span>
+            </form>
+        </div>
+    </div>        
+            
+</div>
+
+<%- include('bottom') %>

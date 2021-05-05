@@ -1,0 +1,101 @@
+<%- include('top') %>
+<div class="bg-light text-center" id="person-content">
+  <img class="profile-img mx-auto mt-5" src="<%= person.imgUrl %>" alt="">
+  <h3><%= person.firstName %>  <%= person.lastName %></h3>
+  <% if (person.status == "Missing") { %>
+    <h4 class="text-danger">Status: Missing</h4>
+  <% } %>
+  <% if (person.status !== "Missing") { %>
+    <h4 class="text-success">Status: Found</h4>
+  <% } %>
+  <ul>
+    <li>
+      <span><strong>Last seen place:</strong> <%= person.city %>, <%= person.state %> </span><br>
+    </li>    
+    <li>
+      <span><strong>Posted by:</strong><a href="/profile/<%= person.uploadedById %>"> <%= postedBy.fname %> <%= postedBy.lname %></a></span> <br>
+    </li>
+    <li>
+      <span><strong>Date of Birth</strong> <%= person.dob %></span> <br>
+    </li>
+    <li>
+      <span><strong>Gender:</strong> <%= person.gender %> </span><br>
+    </li>    
+    <li>
+      <span><strong>Height:</strong> <%= person.feet %>'<%= person.inches %>" </span><br>
+    </li>
+    <li>
+      <span><strong>Weight:</strong> <%= person.weight %> </span><br>
+    </li>    
+    <li>
+      <span><strong>Hair Color:</strong> <%= person.hair %> </span><br>
+    </li>
+    <li>
+      <span><strong>Eye Color:</strong> <%= person.eyes %> </span><br>
+    </li>  
+    <li>
+      <span><strong>Race:</strong> <%= person.race %> </span><br>
+    </li>      
+  </ul>
+
+  <div class="text-center">
+  <!-- Button trigger modal -->
+  <% if (isLoggedIn)  { %>   
+    <span>Have Information About This Person?</span> <br>       
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#leadModal">
+      Submit a Lead    
+    </button>
+  <% } %>  
+
+  <% if (!isLoggedIn)  { %>   
+    <span>Have Information About This Person?</span> <br>       
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#loginModal">
+      Submit a Lead    
+    </button>
+  <% } %>  
+
+  </div>
+  <!-- Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Submit Lead</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <h6>Must be logged in to submit a lead.</h6>
+          <a href="/login" class="btn btn-primary" >Login</a>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="leadModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Submit Lead</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+        <form id="leadForm" action="/submit-lead/<%= person._id %>" method="POST">
+          <h6>Enter Lead Information</h6>
+          <textarea id='leadText' name="message" class="form-control"></textarea>  
+        </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          <button type="submit" form="leadForm" class="btn btn-primary">Submit</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+<%- include('bottom') %>
